@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net46;netstandard1.6</TargetFrameworks>
+    <OutputType>Library</OutputType>
+    <PlatformTarget>AnyCpu</PlatformTarget>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Cake.Openshift</PackageId>    
+    <PackageVersion>0.1.0</PackageVersion>    
+    <PackageLicenseUrl>https://github.com/Meir017/Cake.Openshift/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Meir017/Cake.Openshift</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/cake-build/graphics/master/png/cake-medium.png</PackageIconUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>cake openshift cake-addin cake-plugin</PackageTags>
+    <Description>A set of aliases for Cake to help with running Openshift commands</Description>
+    <Copyright>Copyright (c) Meir Blachman</Copyright>
+  </PropertyGroup>
+  
+  <Import Project="..\..\Shared.msbuild" />
+
+  <ItemGroup>
+    <PackageReference Include="Cake.Core" Version="0.23.0" />
+  </ItemGroup>
+</Project>

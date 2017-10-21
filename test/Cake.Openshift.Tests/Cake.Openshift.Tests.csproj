@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+    <IsCakeTestProject>true</IsCakeTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Cake.Testing" Version="0.23.0" />
+    <PackageReference Include="FluentAssertions" Version="5.0.0-beta0003" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0-preview-20170628-02" />
+    <PackageReference Include="Moq" Version="4.7.142" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.2.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Cake.Openshift\Cake.Openshift.csproj" />
+  </ItemGroup>
+
+</Project>

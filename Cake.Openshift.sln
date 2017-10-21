@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DE522053-87A2-47BA-B6C9-1B3910CC1BD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B6DDD39B-7EDD-4232-BDA0-ACD05ACE8DE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.Openshift", "src\Cake.Openshift\Cake.Openshift.csproj", "{F5EA0D91-1662-4F14-986A-B25C024470E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.Openshift.Tests", "test\Cake.Openshift.Tests\Cake.Openshift.Tests.csproj", "{6380235C-51E6-4F4A-B410-B73324D21D4E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{26E7701E-0DD8-491F-9084-CAD64B7AA635}"
+	ProjectSection(SolutionItems) = preProject
+		build.cake = build.cake
+		build.ps1 = build.ps1
+		build.sh = build.sh
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "meta", "meta", "{3E5D1F75-879F-4A3C-B09C-F6E7AE8796C9}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Cake.ruleset = Cake.ruleset
+		LICENSE = LICENSE
+		Shared.msbuild = Shared.msbuild
+		stylecop.json = stylecop.json
+		Test.ruleset = Test.ruleset
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5EA0D91-1662-4F14-986A-B25C024470E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5EA0D91-1662-4F14-986A-B25C024470E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5EA0D91-1662-4F14-986A-B25C024470E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5EA0D91-1662-4F14-986A-B25C024470E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6380235C-51E6-4F4A-B410-B73324D21D4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6380235C-51E6-4F4A-B410-B73324D21D4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6380235C-51E6-4F4A-B410-B73324D21D4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6380235C-51E6-4F4A-B410-B73324D21D4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F5EA0D91-1662-4F14-986A-B25C024470E6} = {DE522053-87A2-47BA-B6C9-1B3910CC1BD1}
+		{6380235C-51E6-4F4A-B410-B73324D21D4E} = {B6DDD39B-7EDD-4232-BDA0-ACD05ACE8DE8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2F5E867-4FAB-4E19-9395-556813DA3A59}
+	EndGlobalSection
+EndGlobal
