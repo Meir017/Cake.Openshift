@@ -6,7 +6,6 @@ using Moq;
 
 namespace Cake.Openshift.Tests.Login
 {
-    [TestClass]
     public class OpenshiftLoginnerTests
     {
         [TestClass]
@@ -61,13 +60,27 @@ namespace Cake.Openshift.Tests.Login
         public class TheAliases
         {
             [TestMethod]
-            public void Should_Throw_If_Context_Is_Null()
+            public void Should_Throw_If_Context_Is_Null_For_Token()
             {
                 // Given
                 ICakeContext context = null;
 
                 // When
                 Action action = () => OpenshiftAliases.OpenshiftLogin(context, "fake");
+
+                // Then
+                action.Should().Throw<ArgumentNullException>()
+                    .Which.ParamName.Should().Be("context");
+            }
+
+            [TestMethod]
+            public void Should_Throw_If_Context_Is_Null_For_Username_And_Password()
+            {
+                // Given
+                ICakeContext context = null;
+
+                // When
+                Action action = () => OpenshiftAliases.OpenshiftLogin(context, "fake-username", "fake-password");
 
                 // Then
                 action.Should().Throw<ArgumentNullException>()
@@ -122,7 +135,7 @@ namespace Cake.Openshift.Tests.Login
                 // Then
                 action.Should().Throw<ArgumentNullException>()
                     .Which.ParamName.Should().Be("token");
-            }            
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 using Cake.Core;
 using Cake.Core.Annotations;
 using Cake.Openshift.Login;
+using Cake.Openshift.StartBuild;
 
 namespace Cake.Openshift
 {
@@ -24,10 +25,23 @@ namespace Cake.Openshift
         /// <param name="context">The context.</param>
         /// <param name="username">The username.</param>
         /// <param name="password">The password.</param>
+        /// <example>
         /// <code>
-        ///     OpenshiftLogin("Admin", "Password1");
+        /// <para>Cake task:</para>
+        /// <![CDATA[
+        ///     Task("Openshift-Login-With-Username-And-Password")
+        ///         .Does(() =>
+        ///         {
+        ///             var username = "admin";
+        ///             var password = "Password1";
+        ///
+        ///             OpenshiftLogin(username, password);
+        ///         });
+        /// ]]>
         /// </code>
+        /// </example>
         [CakeMethodAlias]
+        [CakeNamespaceImport("Cake.Openshift.Login")]
         public static void OpenshiftLogin(this ICakeContext context, string username, string password)
         {
             if (context == null)
@@ -54,10 +68,22 @@ namespace Cake.Openshift
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="token">The Bearer token.</param>
+        /// <example>
         /// <code>
-        ///     OpenshiftLogin("Bearer Token");
+        /// <para>Cake task:</para>
+        /// <![CDATA[
+        ///     Task("Openshift-Login-With-Bearer-Token")
+        ///         .Does(() =>
+        ///         {
+        ///             var token = "token";
+        ///
+        ///             OpenshiftLogin(token);
+        ///         });
+        /// ]]>
         /// </code>
+        /// </example>
         [CakeMethodAlias]
+        [CakeNamespaceImport("Cake.Openshift.Login")]
         public static void OpenshiftLogin(this ICakeContext context, string token)
         {
             if (context == null)
@@ -72,6 +98,72 @@ namespace Cake.Openshift
 
             var loginner = new OpenshiftLoginner(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             loginner.Run(new OpenshiftLoginSettings { Token = token });
+        }
+
+        /// <summary>
+        /// Starts a new openshift build for the provided build config.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="buildConfig">The build config.</param>
+        /// <example>
+        /// <code>
+        /// <para>Cake task:</para>
+        /// <![CDATA[
+        ///     Task("Openshift-StartBuild")
+        ///         .Does(() =>
+        ///         {
+        ///             var buildConfig = "hello-world";
+        ///
+        ///             OpenshiftStartBuild(buildConfig);
+        ///         });
+        /// ]]>
+        /// </code>
+        /// </example>
+        public static void OpenshiftStartBuild(this ICakeContext context, string buildConfig) => OpenshiftStartBuild(context, buildConfig, new OpenshiftBuildStarterSettings());
+
+        /// <summary>
+        /// Starts a new openshift build for the provided build config with additional options.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="buildConfig">The build config.</param>
+        /// <param name="settings">The settings</param>
+        /// <example>
+        /// <code>
+        /// <para>Cake task:</para>
+        /// <![CDATA[
+        ///     Task("Openshift-StartBuild")
+        ///         .Does(() =>
+        ///         {
+        ///             var buildConfig = "hello-world";
+        ///
+        ///             OpenshiftStartBuild(buildConfig, new OpenshiftBuildStarterSettings
+        ///             {
+        ///                 Follow = true,
+        ///                 Wait = true
+        ///             });
+        ///         });
+        /// ]]>
+        /// </code>
+        /// </example>
+        public static void OpenshiftStartBuild(this ICakeContext context, string buildConfig, OpenshiftBuildStarterSettings settings)
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
+            if (string.IsNullOrEmpty(buildConfig))
+            {
+                throw new ArgumentNullException(nameof(buildConfig));
+            }
+
+            if (settings == null)
+            {
+                throw new ArgumentNullException(nameof(settings));
+            }
+
+            var buildStarter = new OpenshiftBuildStarter(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
+            buildStarter.Run(buildConfig, settings);
         }
     }
 }
