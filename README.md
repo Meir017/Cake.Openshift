@@ -8,13 +8,33 @@ A set of aliases for Cake to help with running Openshift commands
 
 var target = Argument("target", "Default");
 
-Task("Openshift-Login")
+Task("Openshift-Login-With-Username-And-Password")
     .Does(() => 
     {
         var username = "admin";
         var password = "Password1";
 
         OpenshiftLogin(username, password);
+    });
+
+Task("Openshift-Login-With-Bearer-Token")
+    .Does(() => 
+    {
+        var token = "token";
+
+        OpenshiftLogin(token);
+    });
+
+Task("Openshift-StartBuild")
+    .Does(() =>
+    {
+        var buildConfig = "hello-world";
+
+        OpenshiftStartBuild(buildConfig, new OpenshiftBuildStarterSettings
+        {
+            Follow = true,
+            Wait = true
+        });
     });
 
 Task("Default")
