@@ -9,7 +9,7 @@
 
   <PropertyGroup>
     <PackageId>Cake.Openshift</PackageId>    
-    <PackageVersion>0.1.0</PackageVersion>    
+    <PackageVersion>0.2.0</PackageVersion>    
     <PackageLicenseUrl>https://github.com/Meir017/Cake.Openshift/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Meir017/Cake.Openshift</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/cake-build/graphics/master/png/cake-medium.png</PackageIconUrl>
@@ -22,6 +22,6 @@
   <Import Project="..\..\Shared.msbuild" />
 
   <ItemGroup>
-    <PackageReference Include="Cake.Core" Version="0.23.0" />
+    <PackageReference Include="Cake.Core" Version="0.22.2" />
   </ItemGroup>
 </Project>
