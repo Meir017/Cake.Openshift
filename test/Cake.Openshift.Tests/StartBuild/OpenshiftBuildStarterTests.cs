@@ -103,6 +103,70 @@ namespace Cake.Openshift.Tests.StartBuild
                 // Then
                 result.Args.Should().Be($"start-build {fixture.BuildConfig} --follow --wait");
             }
+
+            [TestMethod]
+            public void Should_Add_BuildConfig_And_Namespace()
+            {
+                // Given
+                var fixture = new OpenshiftBuildStarterFixture();
+                fixture.BuildConfig = "hello-world";
+                fixture.Settings.Namespace = "my-namespace";
+
+                // When
+                var result = fixture.Run();
+
+                // Then
+                result.Args.Should().Be($"start-build {fixture.BuildConfig} --namespace={fixture.Settings.Namespace}");
+            }
+
+            [TestMethod]
+            public void Should_Add_BuildConfig_And_Follow_Flag_And_Namespace()
+            {
+                // Given
+                var fixture = new OpenshiftBuildStarterFixture();
+                fixture.BuildConfig = "hello-world";
+                fixture.Settings.Follow = true;
+                fixture.Settings.Namespace = "my-namespace";
+
+                // When
+                var result = fixture.Run();
+
+                // Then
+                result.Args.Should().Be($"start-build {fixture.BuildConfig} --follow --namespace={fixture.Settings.Namespace}");
+            }
+
+            [TestMethod]
+            public void Should_Add_BuildConfig_And_Wait_Flag_And_Namespace()
+            {
+                // Given
+                var fixture = new OpenshiftBuildStarterFixture();
+                fixture.BuildConfig = "hello-world";
+                fixture.Settings.Wait = true;
+                fixture.Settings.Namespace = "my-namespace";
+
+                // When
+                var result = fixture.Run();
+
+                // Then
+                result.Args.Should().Be($"start-build {fixture.BuildConfig} --wait --namespace={fixture.Settings.Namespace}");
+            }
+
+            [TestMethod]
+            public void Should_Add_BuildConfig_And_Follow_And_Wait_Flags_And_Namespace()
+            {
+                // Given
+                var fixture = new OpenshiftBuildStarterFixture();
+                fixture.BuildConfig = "hello-world";
+                fixture.Settings.Follow = true;
+                fixture.Settings.Wait = true;
+                fixture.Settings.Namespace = "my-namespace";
+
+                // When
+                var result = fixture.Run();
+
+                // Then
+                result.Args.Should().Be($"start-build {fixture.BuildConfig} --follow --wait --namespace={fixture.Settings.Namespace}");
+            }
         }
 
         [TestClass]

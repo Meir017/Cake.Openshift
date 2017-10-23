@@ -54,7 +54,11 @@ namespace Cake.Openshift
         /// <returns>Returns <see cref="ProcessArgumentBuilder"/> updated with common commandline arguments.</returns>
         private ProcessArgumentBuilder AppendCommonArguments(ProcessArgumentBuilder builder, TSettings settings)
         {
-            // TODO:
+            if (!string.IsNullOrEmpty(settings.Namespace))
+            {
+                builder.AppendSwitch("--namespace", "=", settings.Namespace);
+            }
+
             return builder;
         }
     }
