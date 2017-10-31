@@ -12,7 +12,7 @@
     <PackageVersion>0.2.1</PackageVersion>    
     <PackageLicenseUrl>https://github.com/Meir017/Cake.Openshift/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Meir017/Cake.Openshift</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/cake-build/graphics/master/png/cake-medium.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</PackageIconUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>cake openshift cake-addin cake-plugin</PackageTags>
     <Description>A set of aliases for Cake to help with running Openshift commands</Description>
