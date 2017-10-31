@@ -14,11 +14,17 @@
         /// <summary>
         /// Gets or sets a value indicating whether to watch its logs until it completes or fails.
         /// </summary>
+        /// <value>
+        /// <c>true</c> to watch its logs until it completes or fails; otherwise, <c>false</c>.
+        /// </value>
         public bool Follow { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether to wait for a build to complete and exit with a non-zero return code if the build fails.
         /// </summary>
+        /// <value>
+        /// <c>true</c> to wait for a build to complete and exit with a non-zero return code if the build fails; otherwise, <c>false</c>.
+        /// </value>
         public bool Wait { get; set; }
     }
 }
