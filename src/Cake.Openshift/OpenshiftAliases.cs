@@ -41,6 +41,7 @@ namespace Cake.Openshift
         /// </code>
         /// </example>
         [CakeMethodAlias]
+        [CakeAliasCategory("Login")]
         [CakeNamespaceImport("Cake.Openshift.Login")]
         public static void OpenshiftLogin(this ICakeContext context, string username, string password)
         {
@@ -83,6 +84,7 @@ namespace Cake.Openshift
         /// </code>
         /// </example>
         [CakeMethodAlias]
+        [CakeAliasCategory("Login")]
         [CakeNamespaceImport("Cake.Openshift.Login")]
         public static void OpenshiftLogin(this ICakeContext context, string token)
         {
@@ -119,6 +121,9 @@ namespace Cake.Openshift
         /// ]]>
         /// </code>
         /// </example>
+        [CakeMethodAlias]
+        [CakeAliasCategory("Build")]
+        [CakeNamespaceImport("Cake.Openshift.StartBuild")]
         public static void OpenshiftStartBuild(this ICakeContext context, string buildConfig) => OpenshiftStartBuild(context, buildConfig, new OpenshiftBuildStarterSettings());
 
         /// <summary>
@@ -145,6 +150,9 @@ namespace Cake.Openshift
         /// ]]>
         /// </code>
         /// </example>
+        [CakeMethodAlias]
+        [CakeAliasCategory("Build")]
+        [CakeNamespaceImport("Cake.Openshift.StartBuild")]
         public static void OpenshiftStartBuild(this ICakeContext context, string buildConfig, OpenshiftBuildStarterSettings settings)
         {
             if (context == null)
