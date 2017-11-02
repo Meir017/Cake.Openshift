@@ -1,5 +1,4 @@
-﻿using System;
-using Cake.Core;
+﻿using Cake.Core;
 using Cake.Core.Annotations;
 using Cake.Openshift.Login;
 using Cake.Openshift.StartBuild;
@@ -45,20 +44,9 @@ namespace Cake.Openshift
         [CakeNamespaceImport("Cake.Openshift.Login")]
         public static void OpenshiftLogin(this ICakeContext context, string username, string password)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(context));
-            }
-
-            if (string.IsNullOrEmpty(username))
-            {
-                throw new ArgumentNullException(nameof(username));
-            }
-
-            if (string.IsNullOrEmpty(password))
-            {
-                throw new ArgumentNullException(nameof(password));
-            }
+            Check.NotNull(context, nameof(context));
+            Check.NotNullOrEmpty(username, nameof(username));
+            Check.NotNullOrEmpty(password, nameof(password));
 
             var loginner = new OpenshiftLoginner(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             loginner.Run(new OpenshiftLoginSettings { Username = username, Password = password });
@@ -88,15 +76,8 @@ namespace Cake.Openshift
         [CakeNamespaceImport("Cake.Openshift.Login")]
         public static void OpenshiftLogin(this ICakeContext context, string token)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(context));
-            }
-
-            if (string.IsNullOrEmpty(token))
-            {
-                throw new ArgumentNullException(nameof(token));
-            }
+            Check.NotNull(context, nameof(context));
+            Check.NotNullOrEmpty(token, nameof(token));
 
             var loginner = new OpenshiftLoginner(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             loginner.Run(new OpenshiftLoginSettings { Token = token });
@@ -155,20 +136,9 @@ namespace Cake.Openshift
         [CakeNamespaceImport("Cake.Openshift.StartBuild")]
         public static void OpenshiftStartBuild(this ICakeContext context, string buildConfig, OpenshiftBuildStarterSettings settings)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(context));
-            }
-
-            if (string.IsNullOrEmpty(buildConfig))
-            {
-                throw new ArgumentNullException(nameof(buildConfig));
-            }
-
-            if (settings == null)
-            {
-                throw new ArgumentNullException(nameof(settings));
-            }
+            Check.NotNull(context, nameof(context));
+            Check.NotNullOrEmpty(buildConfig, nameof(buildConfig));
+            Check.NotNull(settings, nameof(settings));
 
             var buildStarter = new OpenshiftBuildStarter(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             buildStarter.Run(buildConfig, settings);

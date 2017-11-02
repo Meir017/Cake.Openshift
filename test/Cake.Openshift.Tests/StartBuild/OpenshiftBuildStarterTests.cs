@@ -6,26 +6,13 @@ using Moq;
 
 namespace Cake.Openshift.Tests.StartBuild
 {
-    public class OpenshiftBuildStarterTests
+    public sealed class OpenshiftBuildStarterTests
     {
         [TestClass]
-        public class TheRunMethod
+        public sealed class TheRunMethod
         {
             [TestMethod]
-            public void Should_Throw_If_Settings_Are_Null()
-            {
-                // Given
-                var fixture = new OpenshiftBuildStarterFixture();
-                fixture.BuildConfig = "hello-world";
-                fixture.Settings = null;
-
-                // When
-                Action action = () => fixture.Run();
-
-                // Then
-                action.Should().Throw<ArgumentNullException>()
-                    .Which.ParamName.Should().Be("settings");
-            }
+            public void Should_Throw_If_Settings_Are_Null() => ToolTests.The_Run_Method_Should_Throw_If_Settings_Are_Null(new OpenshiftBuildStarterFixture());
 
             [DataTestMethod]
             [DataRow(null)]
@@ -170,7 +157,7 @@ namespace Cake.Openshift.Tests.StartBuild
         }
 
         [TestClass]
-        public class TheAliases
+        public sealed class TheAliases
         {
             [TestMethod]
             public void Should_Throw_If_Context_Is_Null()
