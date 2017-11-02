@@ -2,9 +2,11 @@
 init:
   - git config --global core.autocrlf true
 
+image: Visual Studio 2017
+
 # Build script
 build_script:
-  - ps: .\build.ps1 -Target "AppVeyor"
+  - ps: .\build.ps1 -Target AppVeyor -Verbosity Diagnostic
 
 # Tests
 test: off
