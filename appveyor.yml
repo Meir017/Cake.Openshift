@@ -19,6 +19,7 @@ branches:
     - /release/.*/
     - /hotfix/.*/
     - /feature/.*/
+    - /improve/.*/
 
 # Build cache
 cache:
