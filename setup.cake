@@ -9,7 +9,8 @@ BuildParameters.SetParameters(context: Context,
                             repositoryOwner: "cake-contrib",
                             repositoryName: "Cake.Openshift",
                             appVeyorAccountName: "cakecontrib",
-                            solutionFilePath: "./Cake.Openshift.sln");
+                            solutionFilePath: "./Cake.Openshift.sln",
+                            shouldRunDotNetCorePack: true);
 
 BuildParameters.PrintParameters(Context);
 
