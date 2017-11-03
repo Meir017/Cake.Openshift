@@ -29,15 +29,8 @@ namespace Cake.Openshift.StartBuild
         /// <param name="settings">The settings.</param>
         public void Run(string buildConfig, OpenshiftBuildStarterSettings settings)
         {
-            if (string.IsNullOrEmpty(buildConfig))
-            {
-                throw new ArgumentNullException(nameof(buildConfig));
-            }
-
-            if (settings == null)
-            {
-                throw new ArgumentNullException(nameof(settings));
-            }
+            Check.NotNull(settings, nameof(settings));
+            Check.NotNullOrEmpty(buildConfig, nameof(buildConfig));
 
             RunCommand(settings, GetArguments(buildConfig, settings));
         }

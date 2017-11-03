@@ -28,10 +28,7 @@ namespace Cake.Openshift.Login
         /// <param name="settings">The settings.</param>
         public void Run(OpenshiftLoginSettings settings)
         {
-            if (settings == null)
-            {
-                throw new ArgumentNullException(nameof(settings));
-            }
+            Check.NotNull(settings, nameof(settings));
 
             RunCommand(settings, GetArguments(settings));
         }

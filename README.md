@@ -1,5 +1,19 @@
-# Cake.Openshift
-A set of aliases for Cake to help with running Openshift commands
+`Cake.Openshift` is A set of aliases for Cake to help with running Openshift commands
+
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/cake-contrib/Cake.Openshift/blob/master/LICENSE)
+
+## Information
+
+| | Stable | Pre-release |
+|:--:|:--:|:--:|
+|GitHub Release|-|[![GitHub release](https://img.shields.io/github/release/cake-contrib/Cake.Openshift.svg)](https://github.com/cake-contrib/Cake.Openshift/releases/latest)|
+|NuGet|[![NuGet](https://img.shields.io/nuget/v/Cake.Openshift.svg)](https://www.nuget.org/packages/Cake.Openshift)|[![NuGet](https://img.shields.io/nuget/vpre/Cake.Openshift.svg)](https://www.nuget.org/packages/Cake.Openshift)|
+
+## Build Status
+
+|Master|
+|:--:|
+[![Build status](https://ci.appveyor.com/api/projects/status/movbectbuf2g5deb/branch/master?svg=true)](https://ci.appveyor.com/project/cakecontrib/cake-openshift/branch/master)
 
 ## Usage
 
