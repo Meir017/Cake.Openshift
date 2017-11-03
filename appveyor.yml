@@ -16,7 +16,7 @@ branches:
   # Whitelist
   only:
     - develop
-    - main
+    - master
     - /r/.*/
     - /release/.*/
     - /hotfix/.*/
