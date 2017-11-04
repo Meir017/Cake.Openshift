@@ -1,5 +1,6 @@
 ﻿using Cake.Core;
 using Cake.Core.Annotations;
+using Cake.Openshift.Delete;
 using Cake.Openshift.Login;
 using Cake.Openshift.StartBuild;
 
@@ -142,6 +143,42 @@ namespace Cake.Openshift
 
             var buildStarter = new OpenshiftBuildStarter(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             buildStarter.Run(buildConfig, settings);
+        }
+
+        /// <summary>
+        /// Deletes an openshift resource.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="settings">The settings</param>
+        /// <example>
+        /// <code>
+        /// <para>Cake task:</para>
+        /// <![CDATA[
+        ///     Task("Openshift-Delete")
+        ///         .Does(() =>
+        ///         {
+        ///             OpenshiftDelete(buildConfig, new OpenshiftDeleterSettings
+        ///             {
+        ///                 ObjectType = "pod",
+        ///                 ObjectName = "node-1-vsjnm",
+        ///                 All = true,
+        ///                 Label = "app=appName",
+        ///                 IgnoreNotFound = true
+        ///             });
+        ///         });
+        /// ]]>
+        /// </code>
+        /// </example>
+        [CakeMethodAlias]
+        [CakeAliasCategory("Build")]
+        [CakeNamespaceImport("Cake.Openshift.Delete")]
+        public static void OpenshiftDelete(this ICakeContext context, OpenshiftDeleterSettings settings)
+        {
+            Check.NotNull(context, nameof(context));
+            Check.NotNull(settings, nameof(settings));
+
+            var deleter = new OpenshiftDeleter(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
+            deleter.Run(settings);
         }
     }
 }
