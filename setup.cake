@@ -10,7 +10,8 @@ BuildParameters.SetParameters(context: Context,
                             repositoryName: "Cake.Openshift",
                             appVeyorAccountName: "cakecontrib",
                             solutionFilePath: "./Cake.Openshift.sln",
-                            shouldRunDotNetCorePack: true);
+                            shouldRunDotNetCorePack: true,
+                            shouldPublishNuGet: true);
 
 BuildParameters.PrintParameters(Context);
 
