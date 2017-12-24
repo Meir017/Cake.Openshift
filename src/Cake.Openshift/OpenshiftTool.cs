@@ -2,6 +2,7 @@
 using Cake.Core;
 using Cake.Core.IO;
 using Cake.Core.Tooling;
+using Newtonsoft.Json;
 
 namespace Cake.Openshift
 {
@@ -11,6 +12,12 @@ namespace Cake.Openshift
     /// <typeparam name="TSettings">The settings type.</typeparam>
     public abstract class OpenshiftTool<TSettings> : Tool<TSettings> where TSettings : OpenshiftSettings
     {
+        private static readonly JsonSerializerSettings _jsonSerializerSettings = new JsonSerializerSettings
+        {
+            ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver(),
+            NullValueHandling = NullValueHandling.Ignore
+        };
+
         /// <summary>
         /// Initializes a new instance of the <see cref="OpenshiftTool{TSettings}"/> class.
         /// </summary>
@@ -44,6 +51,24 @@ namespace Cake.Openshift
             AppendCommonArguments(builder, settings);
 
             Run(settings, builder);
+        }
+
+        /// <summary>
+        /// Runs the openshift cli command using the specified settings and arguments.
+        /// </summary>
+        /// <typeparam name="T">The type to parse the output text as.</typeparam>
+        /// <param name="settings">The settings.</param>
+        /// <param name="builder">The arguments.</param>
+        /// <returns>The parsed output text.</returns>
+        protected T RunCommandAndParseJson<T>(TSettings settings, ProcessArgumentBuilder builder)
+        {
+            AppendCommonArguments(builder, settings);
+
+            var jsonString = string.Empty;
+            Run(settings, builder, new ProcessSettings { RedirectStandardOutput = true },
+                process => jsonString = string.Join("\n", process.GetStandardOutput()));
+
+            return JsonConvert.DeserializeObject<T>(jsonString, _jsonSerializerSettings);
         }
 
         /// <summary>

@@ -1,6 +1,8 @@
 ﻿using Cake.Core;
 using Cake.Core.Annotations;
 using Cake.Openshift.Delete;
+using Cake.Openshift.Get.Build;
+using Cake.Openshift.Get.Build.Data;
 using Cake.Openshift.Login;
 using Cake.Openshift.StartBuild;
 
@@ -179,6 +181,76 @@ namespace Cake.Openshift
 
             var deleter = new OpenshiftDeleter(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             deleter.Run(settings);
+        }
+
+        /// <summary>
+        /// Gets the build details.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="buildName">The build name.</param>
+        /// <returns>The build details.</returns>
+        /// <example>
+        /// <code>
+        /// <para>Cake task:</para>
+        /// <![CDATA[
+        ///     Task("Openshift-Get-Build")
+        ///         .Does(() =>
+        ///         {
+        ///             var buildName = "hello-world";
+        ///
+        ///             var build = OpenshiftGetBuild(buildName);
+        ///         });
+        /// ]]>
+        /// </code>
+        /// </example>
+        [CakeMethodAlias]
+        [CakeAliasCategory("Get")]
+        [CakeNamespaceImport("Cake.Openshift.Get.Build")]
+        [CakeNamespaceImport("Cake.Openshift.Get.Build.Data")]
+        public static OpenshiftBuild OpenshiftGetBuild(this ICakeContext context, string buildName)
+        {
+            Check.NotNull(context, nameof(context));
+            Check.NotNullOrEmpty(buildName, nameof(buildName));
+
+            return OpenshiftGetBuild(context, buildName, new OpenshiftBuildGetterSettings());
+        }
+
+        /// <summary>
+        /// Gets the build details.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="buildName">The build name.</param>
+        /// <param name="settings">The settings.</param>
+        /// <returns>The build details.</returns>
+        /// <example>
+        /// <code>
+        /// <para>Cake task:</para>
+        /// <![CDATA[
+        ///     Task("Openshift-Get-Build")
+        ///         .Does(() =>
+        ///         {
+        ///             var buildName = "hello-world";
+        ///
+        ///             var build = OpenshiftGetBuild(buildName, new OpenshiftBuildStarterSettings
+        ///             {
+        ///                 Namespace = "my-namespace"
+        ///             });
+        ///         });
+        /// ]]>
+        /// </code>
+        /// </example>
+        [CakeMethodAlias]
+        [CakeAliasCategory("Get")]
+        [CakeNamespaceImport("Cake.Openshift.Get.Build")]
+        [CakeNamespaceImport("Cake.Openshift.Get.Build.Data")]
+        public static OpenshiftBuild OpenshiftGetBuild(this ICakeContext context, string buildName, OpenshiftBuildGetterSettings settings)
+        {
+            Check.NotNull(context, nameof(context));
+            Check.NotNullOrEmpty(buildName, nameof(buildName));
+            Check.NotNull(settings, nameof(settings));
+
+            var buildGetter = new OpenshiftBuildGetter(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
+            return buildGetter.Run(buildName, settings);
         }
     }
 }
