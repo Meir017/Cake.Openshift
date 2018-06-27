@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net46;netstandard1.6</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <OutputType>Library</OutputType>
     <PlatformTarget>AnyCpu</PlatformTarget>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -21,7 +21,7 @@
   <Import Project="..\..\Shared.msbuild" />
 
   <ItemGroup>
-    <PackageReference Include="Cake.Core" Version="0.22.2" />
+    <PackageReference Include="Cake.Core" Version="0.28.1" PrivateAssets="All" />
     <PackageReference Include="JetBrains.Annotations" Version="11.1.0" />
   </ItemGroup>
 </Project>
