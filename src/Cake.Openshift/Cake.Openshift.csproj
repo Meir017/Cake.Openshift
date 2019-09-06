@@ -9,15 +9,17 @@
 
   <PropertyGroup>
     <PackageId>Cake.Openshift</PackageId>
-    <PackageLicenseUrl>https://github.com/Meir017/Cake.Openshift/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/Meir017/Cake.Openshift</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/cake-contrib/Cake.Openshift</PackageProjectUrl>
     <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/cake-contrib/Cake.Openshift.git</RepositoryUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>cake openshift cake-addin cake-plugin</PackageTags>
     <Description>A set of aliases for Cake to help with running Openshift commands</Description>
     <Copyright>Copyright (c) Meir Blachman</Copyright>
   </PropertyGroup>
-  
+
   <Import Project="..\..\Shared.msbuild" />
 
   <ItemGroup>
