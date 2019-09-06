@@ -25,5 +25,5 @@ branches:
 
 # Build cache
 cache:
-- tools -> setup.cake
-- packages -> setup.cake
+- tools -> recipe.cake
+- packages -> recipe.cake
